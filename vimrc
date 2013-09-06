@@ -46,7 +46,7 @@ nmap <silent> <leader>rt :TagbarToggle<CR>
 "
 " set color
 "
-" syntax enable
+syntax enable
 " set background=light
 " colorscheme solarized
 " if has('gui_running')
@@ -54,3 +54,8 @@ nmap <silent> <leader>rt :TagbarToggle<CR>
 " else
 "     set background=dark
 " endif
+"
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
