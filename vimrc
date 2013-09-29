@@ -44,18 +44,65 @@ nmap <silent> <leader>rt :TagbarToggle<CR>
 "
 "
 "
-" set color
+" set color scheme solarized
 "
 syntax enable
-" set background=light
-" colorscheme solarized
-" if has('gui_running')
-"     set background=light
-" else
-"     set background=dark
-" endif
+set background=dark
+if has('gui_running')
+    set background=dark
+else
+    set background=dark
+endif
+let g:solarized_termtrans = 1
+let g:solarized_termcolors=256
+colorscheme solarized
+
 "
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+" Show whitespace
+set list listchars=tab:»·,trail:·
+" Highlight trailing/leading whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Indent Python in the Google way.
+
+setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+
+let s:maxoff = 50 " maximum number of lines to look backwards.
+
+function GetGooglePythonIndent(lnum)
+
+  " Indent inside parens.
+  " Align with the open paren unless it is at the end of the line.
+  " E.g.
+  "   open_paren_not_at_EOL(100,
+  "                         (200,
+  "                          300),
+  "                         400)
+  "   open_paren_at_EOL(
+  "       100, 200, 300, 400)
+  call cursor(a:lnum, 1)
+  let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
+        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+        \ . " =~ '\\(Comment\\|String\\)$'")
+  if par_line > 0
+    call cursor(par_line, 1)
+    if par_col != col("$") - 1
+      return par_col
+    endif
+  endif
+
+  " Delegate the rest to the original function.
+  return GetPythonIndent(a:lnum)
+
+endfunction
+
+let pyindent_nested_paren="&sw*2"
+let pyindent_open_paren="&sw*2"
+

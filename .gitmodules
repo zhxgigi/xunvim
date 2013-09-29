@@ -31,3 +31,9 @@
 [submodule "vim/bundle/minibufexpl"]
 	path = vim/bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim
+[submodule "vim/bundle/vim-github-colorscheme"]
+	path = vim/bundle/vim-github-colorscheme
+	url = https://github.com/endel/vim-github-colorscheme
