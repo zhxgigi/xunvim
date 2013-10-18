@@ -69,6 +69,7 @@ set list listchars=tab:»·,trail:·
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
 
+" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 " Indent Python in the Google way.
 
 setlocal indentexpr=GetGooglePythonIndent(v:lnum)
@@ -105,4 +106,7 @@ endfunction
 
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
+" End of Indent Python in the Google way.
+" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
+let g:pyflakes_use_quickfix = 0

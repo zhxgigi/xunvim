@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-github-colorscheme"]
 	path = vim/bundle/vim-github-colorscheme
 	url = https://github.com/endel/vim-github-colorscheme
+[submodule "vim/bundle/pyflakes-vim"]
+	path = vim/bundle/pyflakes-vim
+	url = https://github.com/kevinw/pyflakes-vim
