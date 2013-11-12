@@ -46,3 +46,6 @@
 [submodule "vim/bundle/pep8"]
 	path = vim/bundle/pep8
 	url = https://github.com/vim-scripts/pep8
+[submodule "vim/bundle/ctags"]
+	path = vim/bundle/ctags
+	url = https://github.com/vim-scripts/ctags.vim
