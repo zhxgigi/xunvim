@@ -109,4 +109,6 @@ let pyindent_open_paren="&sw*2"
 " End of Indent Python in the Google way.
 " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-let g:pyflakes_use_quickfix = 0
+" let g:pyflakes_use_quickfix = 0
+
+autocmd BufWritePost *.py call Flake8()

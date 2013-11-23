@@ -49,3 +49,6 @@
 [submodule "vim/bundle/ctags"]
 	path = vim/bundle/ctags
 	url = https://github.com/vim-scripts/ctags.vim
+[submodule "vim/bundle/vim-flake8"]
+	path = vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8
