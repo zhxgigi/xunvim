@@ -46,16 +46,16 @@ nmap <silent> <leader>rt :TagbarToggle<CR>
 "
 " set color scheme solarized
 "
-syntax enable
-set background=dark
-if has('gui_running')
-    set background=dark
-else
-    set background=dark
-endif
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-colorscheme solarized
+"syntax enable
+"set background=dark
+"if has('gui_running')
+"    set background=dark
+"else
+"    set background=dark
+"endif
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors=256
+" colorscheme solarized
 
 "
 let g:miniBufExplMapWindowNavVim = 1
