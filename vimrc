@@ -70,47 +70,47 @@ set list listchars=tab:»·,trail:·
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
 
- " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
- " Indent Python in the Google way.
+" Indent Python in the Google way.
 
- setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-
- let s:maxoff = 50 " maximum number of lines to look backwards.
-
- function GetGooglePythonIndent(lnum)
-
-   " Indent inside parens.
-   " Align with the open paren unless it is at the end of the line.
-   " E.g.
-   "   open_paren_not_at_EOL(100,
-   "                         (200,
-   "                          300),
-   "                         400)
-   "   open_paren_at_EOL(
-   "       100, 200, 300, 400)
-   call cursor(a:lnum, 1)
-   let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-         \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-         \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-         \ . " =~ '\\(Comment\\|String\\)$'")
-   if par_line > 0
-     call cursor(par_line, 1)
-     if par_col != col("$") - 1
-       return par_col
-     endif
-   endif
-
-   " Delegate the rest to the original function.
-   return GetPythonIndent(a:lnum)
-
- endfunction
-
-let pyindent_nested_paren="&sw*2"
-let pyindent_open_paren="&sw*2"
-" End of Indent Python in the Google way.
-" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+"setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+"
+"let s:maxoff = 50 " maximum number of lines to look backwards.
+"
+"function GetGooglePythonIndent(lnum)
+"
+"" Indent inside parens.
+"" Align with the open paren unless it is at the end of the line.
+"" E.g.
+""   open_paren_not_at_EOL(100,
+""                         (200,
+""                          300),
+""                         400)
+""   open_paren_at_EOL(
+""       100, 200, 300, 400)
+"call cursor(a:lnum, 1)
+"let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
+"        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+"        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+"        \ . " =~ '\\(Comment\\|String\\)$'")
+"if par_line > 0
+"    call cursor(par_line, 1)
+"    if par_col != col("$") - 1
+"    return par_col
+"    endif
+"endif
+"
+"" Delegate the rest to the original function.
+"return GetPythonIndent(a:lnum)
+"
+"endfunction
+"
+"let pyindent_nested_paren="&sw*2"
+"let pyindent_open_paren="&sw*2"
+"" End of Indent Python in the Google way.
+"" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 let g:pyflakes_use_quickfix = 0
+let g:flake8_max_complexity=10
 
 " autocmd BufWritePost *.py call Flake8()
 
