@@ -1,4 +1,5 @@
-
+scriptencoding utf-8
+set encoding=utf-8
 " disable some plugins
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'syntastic')
